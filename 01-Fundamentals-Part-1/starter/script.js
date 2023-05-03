@@ -166,14 +166,14 @@ if (favourite == 23) {
 if (favourite !== 23) console.log("Why not 23");
 */
 
-const hasDriversLicense = true; // A
-const hasGoodVision = true; // B
+// const hasDriversLicense = true; // A
+// const hasGoodVision = true; // B
 
-console.log(hasDriversLicense && hasGoodVision);
-console.log(hasDriversLicense || hasGoodVision);
-console.log(!hasDriversLicense);
+// console.log(hasDriversLicense && hasGoodVision);
+// console.log(hasDriversLicense || hasGoodVision);
+// console.log(!hasDriversLicense);
 
-const shouldDrive = hasDriversLicense && hasGoodVision;
+// const shouldDrive = hasDriversLicense && hasGoodVision;
 
 // if (shouldDrive) {
 //   console.log("I can drive");
@@ -181,12 +181,90 @@ const shouldDrive = hasDriversLicense && hasGoodVision;
 //   console.log("Someone else should drive...");
 // }
 
-const isTired = true; // C
+// const isTired = false; // C
 
-console.log(hasDriversLicense && hasDriversLicense && isTired);
+// console.log(hasDriversLicense && hasDriversLicense && isTired);
 
-if (hasDriversLicense && hasGoodVision && !isTired) {
-  console.log("I can drive");
-} else {
-  console.log("Someone else should drive...");
-}
+// if (hasDriversLicense && hasGoodVision && !isTired) {
+//   console.log("I can drive");
+// } else {
+//   console.log("Someone else should drive...");
+// }
+
+// const averageDolphinScore = (97 + 112 + 101) / 3;
+// const averageKoalaScore = (109 + 95 + 106) / 3;
+
+// if (averageDolphinScore > averageKoalaScore && averageDolphinScore >= 100) {
+//   console.log("Dolphins Win!");
+// } else if (
+//   averageDolphinScore < averageKoalaScore &&
+//   averageKoalaScore >= 100
+// ) {
+// } else if (
+//   averageDolphinScore === averageKoalaScore &&
+//   averageDolphinScore >= 100
+// ) {
+//   console.log("Tie!");
+// } else {
+//   console.log("Everyone loses");
+// }
+
+// Switch statement
+
+// const day = "monday";
+
+// switch (day) {
+//   case "monday": // day === 'monday'
+//     console.log("Plan course structure");
+//     console.log("Go to coding meetup");
+//     break;
+//   case "tuesday":
+//     console.log("Prepare theory videos");
+//     break;
+//   case "wednesday":
+//   case "thursday":
+//     console.log("Write code examples");
+//     break;
+//   case "friday":
+//     console.log("Record videos");
+//     break;
+//   case "saturday":
+//   case "sunday":
+//     console.log("Enjoy the weekend");
+//     break;
+//   default:
+//     console.log("Not a valid day!");
+// }
+
+// const me = "Andrew";
+// console.log(`I'm ${2037 - 1991} years old ${me}`);
+
+// Ternary operator example
+// const age = 23;
+// age >= 18
+//   ? console.log("I like to drink wine.")
+//   : console.log("I like to drink water");
+
+// const drink = age >= 18 ? "wine" : "water";
+
+// console.log(drink);
+
+// let drink2;
+
+// if (age >= 18) {
+//   drink2 = "wine";
+// } else {
+//   drink2 = "water";
+// }
+// console.log(drink2);
+
+// console.log(`I like to drink ${age >= 18 ? "wine" : "water"}`);
+
+// const bill = 40;
+
+// let tip;
+// tip = 300 >= bill && bill >= 50 ? 0.15 * bill : 0.2 * bill;
+
+// console.log(
+//   `The bill was ${bill}, the tip was ${tip} and the total was ${bill + tip}`
+// );
