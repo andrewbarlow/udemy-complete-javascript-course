@@ -231,8 +231,63 @@ console.log(checkWinner(1, 1, 2, 1, 1, 2));
 // console.log(`Lift rep ${rep}`);
 // }
 
-const andrewArray = ["Andrew", "Barlow", 2037 - 2000, "student"];
+// const andrewArray = ["Andrew", "Barlow", 2037 - 2000, "student"];
 
-for (let i = 0; i < andrewArray.length; i++) {
-  console.log(andrewArray[i]);
+// const types = [];
+
+// for (let i = 0; i < andrewArray.length; i++) {
+//   console.log(andrewArray[i], typeof andrewArray[i]);
+
+//   types.push(typeof andrewArray[i]);
+// }
+
+// console.log(types);
+
+// const years = [1992, 2008, 1940, 2021];
+// const ages = [];
+
+// for (let i = 0; i < years.length; i++) {
+//   ages.push(2037 - years[i]);
+// }
+
+// console.log(ages);
+
+// // continue and break
+
+// for (let i = 0; i < andrewArray.length; i++) {
+//   if (typeof andrewArray[i] !== "string") continue;
+//   console.log(andrewArray[i], typeof andrewArray[i]);
+// }
+
+// let rep = 1;
+
+// while (rep <= 10) {
+//   console.log(`Weight rep ${rep}`);
+//   rep++;
+// }
+
+// let dice = Math.trunc(Math.random() * 6);
+// console.log(dice);
+
+// while (dice !== 6) {
+//   console.log(`you rolled a ${dice}`);
+//   dice = Math.trunc(Math.random() * 6);
+// }
+
+const calcTip = function (bill) {
+  const tipValue = bill <= 300 && bill >= 50 ? 0.15 : 0.2;
+  return tipValue * bill;
+};
+
+const bills = [22, 295, 176, 449, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+for (let i = 0; i < bills.length; i++) {
+  tips.push(calcTip(bills[i]));
+  totals.push(bills[i] + tips[i]);
 }
+
+console.log(bills);
+console.log(tips);
+console.log(totals);
