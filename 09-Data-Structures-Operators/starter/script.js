@@ -1,8 +1,6 @@
 'use strict';
 
 // Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 const openingHours = {
   thu: {
@@ -544,46 +542,214 @@ GOOD LUCK 😀
 // for (const [key, value] of gameEvents) {
 //   const string = key <= 45 ? '[FIRST HALF]' : '[SECOND HALF]';
 //   console.log(string + ' ' + key + ': ' + value);
+// // }
+
+// const airLine = 'TAP Air Portugal';
+// const plane = 'A320';
+
+// console.log(plane[0]);
+// console.log(plane[1]);
+// console.log(plane[2]);
+// console.log('B737'[0]);
+// console.log(airLine.length);
+
+// console.log(airLine.indexOf('r'));
+// console.log(airLine.lastIndexOf('r'));
+// console.log(airLine.indexOf('Portugal'));
+
+// console.log(airLine.slice(4));
+// console.log(airLine.slice(4, 7));
+
+// console.log(airLine.slice(0, airLine.indexOf(' ')));
+// console.log(airLine.slice(airLine.lastIndexOf(' ') + 1));
+
+// console.log(airLine.slice(-2));
+// console.log(airLine.slice(1, -1));
+
+// const checkMiddleSeat = function (seat) {
+//   // B and E are middle seats
+//   const s = seat.slice(-1);
+//   if (s === 'B' || s === 'E') {
+//     console.log('You got the middle seat');
+//   } else {
+//     console.log('You got lucky');
+//   }
+// };
+
+// checkMiddleSeat('11B');
+// checkMiddleSeat('23C');
+// checkMiddleSeat('12A');
+// checkMiddleSeat('3E');
+
+// console.log(new String('Andrew'));
+// console.log(typeof new String('Andrew'));
+
+// console.log(typeof new String('Andrew').slice(1));
+
+// console.log(airLine.toUpperCase());
+// console.log(airLine.toLowerCase());
+
+// const passenger = 'aNdReW';
+// const passengerLower = passenger.toLowerCase();
+// const passengerCorrect =
+//   passengerLower[0].toUpperCase() + passengerLower.slice(1);
+
+// console.log(passengerCorrect);
+
+// const email = 'hello@andrew.ca';
+// const loginEmail = '  Hello@Andrew.ca \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
+
+// const normalizedEmail = loginEmail.toLowerCase().trim();
+
+// const priceGB = '288,97#';
+// const priceUS = priceGB.replace('#', '$').replace(',', '.');
+// console.log(priceUS);
+
+// const announcement =
+//   'All passengers come to boarding door 23. Boarding door 23.';
+
+// console.log(announcement.replaceAll('door', 'gate'));
+// console.log(announcement.replace(/door/g, 'gate'));
+
+// // Booleans
+
+// const plane2 = 'Airbus A320neo';
+// console.log(plane2.includes('A320'));
+// console.log(plane2.includes('Boeing'));
+// console.log(plane2.startsWith('Air'));
+
+// if (plane2.startsWith('Airbus') && plane2.endsWith('neo')) {
+//   console.log('Part of new airbus family');
 // }
 
-const airLine = 'TAP Air Portugal';
-const plane = 'A320';
+// // Practice
+// const checkBaggage = function (items) {
+//   const baggage = items.toLowerCase();
+//   if (baggage.includes('knife') || baggage.includes('gun')) {
+//     console.log('You are not allowed onboard');
+//   } else {
+//     console.log('Welcome aboard');
+//   }
+// };
 
-console.log(plane[0]);
-console.log(plane[1]);
-console.log(plane[2]);
-console.log('B737'[0]);
-console.log(airLine.length);
+// checkBaggage('Laptop, food, and pocket knife');
+// checkBaggage('Socks and camera');
+// checkBaggage('Snacks and a gun');
 
-console.log(airLine.indexOf('r'));
-console.log(airLine.lastIndexOf('r'));
-console.log(airLine.indexOf('Portugal'));
+// // console.log('a+very+nice+string').split('+');
+// const [firstName, lastName] = 'Andrew Barlow'.split(' ');
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
 
-console.log(airLine.slice(4));
-console.log(airLine.slice(4, 7));
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   const namesUpper = [];
+//   console.log(name);
 
-console.log(airLine.slice(0, airLine.indexOf(' ')));
-console.log(airLine.slice(airLine.lastIndexOf(' ') + 1));
+//   for (const n of names) {
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//   }
+//   console.log(namesUpper.join(' '));
+// };
 
-console.log(airLine.slice(-2));
-console.log(airLine.slice(1, -1));
+// const passenger1 = 'jessica anne smith davis';
+// capitalizeName(passenger1);
 
-const checkMiddleSeat = function (seat) {
-  // B and E are middle seats
-  const s = seat.slice(-1);
-  if (s === 'B' || s === 'E') {
-    console.log('You got the middle seat');
-  } else {
-    console.log('You got lucky');
+// const message = 'Go to gate 23!';
+// console.log(message.padStart(25, '+'));
+// console.log('Andrew'.padStart(25, '+'));
+
+// const maskCreditCard = function (number) {
+//   const str = number + '';
+//   const last = str.slice(-4);
+//   return last.padStart(str.length, '*');
+// };
+
+// console.log(maskCreditCard(123456789));
+
+// // Repeat
+// const message2 = 'Bad weather... All departures delayed... \n';
+
+// console.log(message2.repeat(5));
+
+// const planesInLine = function (n) {
+//   console.log(`There are ${n} planes in line... ${'plane '.repeat(n)}`);
+// };
+
+// planesInLine(12);
+
+///////////////////////////////////////
+// Coding Challenge #4
+
+/* 
+Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+
+The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
+
+THIS TEST DATA (pasted to textarea)
+underscore_case
+ first_name
+Some_Variable 
+  calculate_AGE
+delayed_departure
+
+SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+underscoreCase      ✅
+firstName           ✅✅
+someVariable        ✅✅✅
+calculateAge        ✅✅✅✅
+delayedDeparture    ✅✅✅✅✅
+
+HINT 1: Remember which character defines a new line in the textarea 😉
+
+HINT 2: The solution only needs to work for a 
+variable made out of 2 words, like a_b
+
+HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+
+HINT 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
+
+Afterwards, test with your own test data!
+*/
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const btnCamel = document.querySelector('button');
+
+const convertCamel = function () {
+  const text = document.querySelector('textarea').value;
+  const individualWords = text.split('\n');
+
+  for (const [i, word] of individualWords.entries()) {
+    individualWords[i] = word.replaceAll(' ', '').toLowerCase();
+    const subwords = individualWords[i].split('_');
+
+    individualWords[i] =
+      subwords[0] + subwords[1][0].toUpperCase() + subwords[1].slice(1);
+    console.log(individualWords[i].padEnd(20, ' ') + '✅'.repeat(i + 1));
   }
 };
 
-checkMiddleSeat('11B');
-checkMiddleSeat('23C');
-checkMiddleSeat('12A');
-checkMiddleSeat('3E');
+btnCamel.addEventListener('click', convertCamel);
 
-console.log(new String('Andrew'));
-console.log(typeof new String('Andrew'));
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-console.log(typeof new String('Andrew').slice(1));
+const subflights = flights.split('+');
+
+for (const flight of subflights) {
+  const [type, from, to, time] = flight.split(';');
+
+  const output = ` ${
+    type.startsWith('_Delayed') ? 'LATE' : ''
+  }${type.replaceAll('_', ' ')} from ${from.slice(0, 3).toUpperCase()} to ${to
+    .slice(0, 3)
+    .toLocaleUpperCase()} (${time.replace(':', 'h')})`.padStart(50);
+
+  console.log(output);
+}
