@@ -195,34 +195,108 @@ greet2Hey('Mike');
 
 // console.log(addRate(0.13)(100));
 
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  answers: new Array(4).fill(0),
-};
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   answers: new Array(4).fill(0),
+// };
 
-poll.registerNewAnswer = function () {
-  const optionString = poll.options.join('\n');
-  const promptArr = [poll.question, optionString, '(Write option number)'];
-  const promptString = promptArr.join('\n');
+// poll.registerNewAnswer = function () {
+//   const optionString = poll.options.join('\n');
+//   const promptArr = [poll.question, optionString, '(Write option number)'];
+//   const promptString = promptArr.join('\n');
 
-  const pollAnswer = Number(prompt(promptString));
+//   const pollAnswer = Number(prompt(promptString));
 
-  typeof pollAnswer === 'number' &&
-    pollAnswer < poll.answers.length &&
-    poll.answers[pollAnswer]++;
+//   typeof pollAnswer === 'number' &&
+//     pollAnswer < poll.answers.length &&
+//     poll.answers[pollAnswer]++;
 
-  poll.displayResults('string');
-};
+//   poll.displayResults('string');
+// };
 
-poll.displayResults = function (type) {
-  if (type.toLowerCase() === 'array') {
-    console.log(poll.answers);
-  } else if (type.toLowerCase() === 'string') {
-    console.log('Poll results are ' + poll.answers.join(', '));
-  }
-};
+// poll.displayResults = function (type) {
+//   if (type.toLowerCase() === 'array') {
+//     console.log(poll.answers);
+//   } else if (type.toLowerCase() === 'string') {
+//     console.log('Poll results are ' + poll.answers.join(', '));
+//   }
+// };
 
-document
-  .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer);
+// document
+//   .querySelector('.poll')
+//   .addEventListener('click', poll.registerNewAnswer);
+
+// IIFE
+// const runOnce = function () {
+//   console.log('This will never run again');
+// };
+
+// (function () {
+//   console.log('This will never run again');
+// })();
+
+// (() => console.log('This will also never run again'))();
+
+// const secureBooking = function () {
+//   let passengerCount = 0;
+
+//   return function () {
+//     passengerCount++;
+//     console.log(`${passengerCount} Passengers`);
+//   };
+// };
+
+// // const booker = secureBooking();
+
+// // booker();
+// // booker();
+// // booker();
+
+// // console.dir(booker);
+
+// let f;
+
+// const g = function () {
+//   const a = 23;
+//   f = function () {
+//     console.log(a * 2);
+//   };
+// };
+
+// const h = function () {
+//   const b = 777;
+//   f = function () {
+//     console.log(b * 2);
+//   };
+// };
+
+// g();
+// f();
+// h();
+// f();
+
+// const boardPassengers = function (n, wait) {
+//   const perGroup = n / 3;
+
+//   setTimeout(function () {
+//     console.log(`We are now boarding all ${n} passengers`);
+//     console.log(`There are 3 groups, each with ${perGroup} passengers`);
+//   }, wait * 1000);
+
+//   console.log(`Will start boarding in ${wait} seconds`);
+// };
+
+// const perGroup = 1000;
+// boardPassengers(180, 3);
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  const changeColor = function () {
+    header.style.color = 'blue';
+  };
+
+  document.body.addEventListener('click', changeColor);
+})();
