@@ -94,7 +94,36 @@ const createUsernames = function (accts) {
 const user = 'Steven Thomas Williams';
 
 createUsernames(accounts);
-console.log(accounts);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}EUR`;
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}EUR`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+
+  labelSumInterest.textContent = `${interest}EUR`;
+};
+
+calcDisplaySummary(account1.movements);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -232,21 +261,71 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // console.log(movementsDescriptions);
 
-const deposits = movements.filter(function (mov) {
-  return mov > 0;
-});
+// const deposits = movements.filter(function (mov) {
+//   return mov > 0;
+// });
 
-console.log(movements);
-console.log(deposits);
+// console.log(movements);
+// console.log(deposits);
 
-const depositsFor = [];
-for (const mov of movements)
-  if (mov > 0) {
-    depositsFor.push(mov);
-  }
+// const depositsFor = [];
+// for (const mov of movements)
+//   if (mov > 0) {
+//     depositsFor.push(mov);
+//   }
 
-console.log(depositsFor);
+// console.log(depositsFor);
 
-const withdrawls = movements.filter(function (mov) {
-  return mov < 0;
-});
+// const withdrawls = movements.filter(function (mov) {
+//   return mov < 0;
+// });
+
+// console.log(movements);
+
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   return acc + cur;
+// }, 0);
+
+// console.log(balance);
+
+// let balance2 = 0;
+// for (const mov of movements) {
+//   balance2 += mov;
+// }
+// console.log(balance2);
+
+// // Maximum value
+
+// const maxValue = movements.reduce(function (acc, cur, i, arr) {
+//   if (acc > cur) return acc;
+//   else return cur;
+// }, movements[0]);
+
+// console.log(maxValue);
+
+// const checkDogs = function (arr) {
+//   const newArr = arr.map(function (dogAge) {
+//     if (dogAge <= 2) {
+//       return dogAge * 2;
+//     } else return 16 + dogAge * 4;
+//   });
+//   const filterNewArr = newArr.filter(function (dogAge) {
+//     return dogAge >= 18;
+//   });
+//   return filterNewArr.reduce(function (acc, dogAge, _, arr) {
+//     return acc + dogAge / arr.length;
+//   }, 0);
+// };
+
+// console.log(checkDogs([5, 2, 4, 1, 15, 8, 3]));
+// console.log(checkDogs([16, 6, 10, 5, 6, 1, 4]));
+
+// const totalDepositsUSD = movements
+//   .filter(mov => mov > 0)
+//   .map((mov, i, arr) => {
+//     console.log(arr);
+//     return mov * 1.1;
+//   })
+//   .reduce((acc, mov) => acc + mov, 0);
+
+// console.log(totalDepositsUSD);
