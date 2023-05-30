@@ -79,8 +79,6 @@ const displayMovements = function (movements) {
   });
 };
 
-displayMovements(account1.movements);
-
 const createUsernames = function (accts) {
   accts.forEach(function (acct) {
     acct.username = acct.owner
@@ -91,23 +89,19 @@ const createUsernames = function (accts) {
   });
 };
 
-const user = 'Steven Thomas Williams';
-
-createUsernames(accounts);
-
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes}EUR`;
-  const out = movements
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}EUR`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
       return int >= 1;
     })
@@ -116,14 +110,89 @@ const calcDisplaySummary = function (movements) {
   labelSumInterest.textContent = `${interest}EUR`;
 };
 
-calcDisplaySummary(account1.movements);
-
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance} €`;
 };
 
-calcDisplayBalance(account1.movements);
+createUsernames(accounts);
+
+const updateUI = function (acc) {
+  // DISPLAY MOVEMENTS
+  displayMovements(acc.movements);
+  // DISPLAY BALANCE
+  calcDisplayBalance(acc);
+  // DISPLAY SUMMARY
+  calcDisplaySummary(acc);
+};
+// Event Handler
+
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  // prevent form from submitting
+  e.preventDefault();
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // DISPLAY UI AND WELCOME MESSAGE
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+
+    // CLEAR INPUT FIELDS
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    updateUI(currentAccount);
+  }
+});
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    // Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    updateUI(currentAccount);
+  }
+});
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+
+    inputCloseUsername.value = inputClosePin.value = '';
+
+    // delete account and hide UI
+    accounts.splice(index, 1);
+    containerApp.style.opacity = 0;
+  }
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -304,17 +373,14 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(maxValue);
 
 // const checkDogs = function (arr) {
-//   const newArr = arr.map(function (dogAge) {
-//     if (dogAge <= 2) {
-//       return dogAge * 2;
-//     } else return 16 + dogAge * 4;
-//   });
-//   const filterNewArr = newArr.filter(function (dogAge) {
-//     return dogAge >= 18;
-//   });
-//   return filterNewArr.reduce(function (acc, dogAge, _, arr) {
-//     return acc + dogAge / arr.length;
-//   }, 0);
+//   return arr
+//     .map(dogAge => {
+//       if (dogAge <= 2) {
+//         return dogAge * 2;
+//       } else return 16 + dogAge * 4;
+//     })
+//     .filter(dogAge => dogAge >= 18)
+//     .reduce((acc, dogAge, _, arr) => acc + dogAge / arr.length, 0);
 // };
 
 // console.log(checkDogs([5, 2, 4, 1, 15, 8, 3]));
@@ -329,3 +395,10 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //   .reduce((acc, mov) => acc + mov, 0);
 
 // console.log(totalDepositsUSD);
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
